@@ -25,13 +25,11 @@ const rollDice = function () {
     diceEl.src = `images/dice-${diceNum}.png`
 
     if (diceNum !== 1) {
+        currentScore0 += diceNum
+        console.log('test ', currentScore0);
+        
+    } else if (diceNum === "1") {
 
-            currentScore0 += diceNum 
-            console.log('test  ', currentScore0);
-            } else if (diceNum === "1" ){
-
-                currentScore0 = 0;
-                console.log('test  ', currentScore0);
-            }
+    }
 }
 btnRoll.addEventListener('click', rollDice);
