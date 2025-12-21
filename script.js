@@ -1,34 +1,34 @@
 'use strict';
 
 
+let current0El = document.getElementById('current--0');
 let score0Elm = document.getElementById('score--0');
 let score1Elm = document.getElementById('score--1');
-score0Elm = 0;
-score1Elm = 0;
-
-let currentScore0 = document.querySelector('.current--0');
-const currentScore1 = document.querySelector('.current--1');
-
+let diceEl = document.querySelector('.dice');
 const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
-let diceEl = document.querySelector('.dice');
+score0Elm.textContent = 0;
+score1Elm.textContent = 0;
 
+let score = [0,0];
+let currentScore = 0;
+let activePlayer =0;
 diceEl.classList.add('hidden');
 
 const rollDice = function () {
-    diceEl.classList.remove('hidden')
-
     const diceNum = Math.floor(Math.random() * 6) + 1;
+    diceEl.classList.remove('hidden');
     console.log(diceNum);
 
     diceEl.src = `images/dice-${diceNum}.png`
 
     if (diceNum !== 1) {
-        currentScore0 += diceNum
-        console.log('test ', currentScore0);
-        
-    } else if (diceNum === "1") {
+        currentScore += diceNum
+        console.log('test ', currentScore);
+        // current0El.textContent = currentScore;
+        document.getElementById(`current${activePlayer}`).textContent= currentScore;
+    } else {
 
     }
 }
