@@ -2,6 +2,8 @@
 
 
 let current0El = document.getElementById('current--0');
+let player0El = document.querySelector('.player--0');
+let  player1El = document.querySelector('.player--1');
 let score0Elm = document.getElementById('score--0');
 let score1Elm = document.getElementById('score--1');
 let diceEl = document.querySelector('.dice');
@@ -27,9 +29,13 @@ const rollDice = function () {
         currentScore += diceNum
         console.log('test ', currentScore);
         // current0El.textContent = currentScore;
-        document.getElementById(`current${activePlayer}`).textContent= currentScore;
+        document.getElementById(`current--${activePlayer}`).textContent = currentScore;
     } else {
-
+        currentScore = 0;
+        document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+        activePlayer = activePlayer === 0 ? 1 : 0;
+        player0El.classList.toggle('player--active')
+        player1El.classList.toggle('player--active')
     }
 }
 btnRoll.addEventListener('click', rollDice);
