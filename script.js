@@ -18,10 +18,17 @@ let currentScore = 0;
 let activePlayer =0;
 diceEl.classList.add('hidden');
 
+const switchPlayer = function(){
+           currentScore = 0;
+        document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+        activePlayer = activePlayer === 0 ? 1 : 0;
+        player0El.classList.toggle('player--active')
+        player1El.classList.toggle('player--active')
+}
 const rollDice = function () {
     const diceNum = Math.floor(Math.random() * 6) + 1;
     diceEl.classList.remove('hidden');
-    console.log(diceNum);
+    // console.log(diceNum);
 
     diceEl.src = `images/dice-${diceNum}.png`
 
@@ -31,11 +38,17 @@ const rollDice = function () {
         // current0El.textContent = currentScore;
         document.getElementById(`current--${activePlayer}`).textContent = currentScore;
     } else {
-        currentScore = 0;
-        document.getElementById(`current--${activePlayer}`).textContent = currentScore;
-        activePlayer = activePlayer === 0 ? 1 : 0;
-        player0El.classList.toggle('player--active')
-        player1El.classList.toggle('player--active')
+        switchPlayer();
     }
 }
 btnRoll.addEventListener('click', rollDice);
+
+btnHold.addEventListener('click', function(){
+    
+    score[activePlayer] += currentScore;
+     console.log( score[activePlayer]);
+
+    document.getElementById(`score--${activePlayer}`).textContent
+
+    switchPlayer();
+})
