@@ -2,11 +2,14 @@
 
 let current0El = document.getElementById('current--0');
 let current1El = document.getElementById('current--1');
+let current1El = document.getElementById('current--1');
 let player0El = document.querySelector('.player--0');
+let player1El = document.querySelector('.player--1');
 let player1El = document.querySelector('.player--1');
 let score0Elm = document.getElementById('score--0');
 let score1Elm = document.getElementById('score--1');
 let diceEl = document.querySelector('.dice');
+
 
 const btnNew = document.querySelector('.btn--new');
 const btnRoll = document.querySelector('.btn--roll');
@@ -42,6 +45,12 @@ const switchPlayer = function () {
     activePlayer = activePlayer === 0 ? 1 : 0;
     player0El.classList.toggle('player--active')
     player1El.classList.toggle('player--active')
+const switchPlayer = function () {
+    currentScore = 0;
+    document.getElementById(`current--${activePlayer}`).textContent = currentScore;
+    activePlayer = activePlayer === 0 ? 1 : 0;
+    player0El.classList.toggle('player--active')
+    player1El.classList.toggle('player--active')
 }
 
 const rollDice = function () {
@@ -49,7 +58,12 @@ const rollDice = function () {
 
         const diceNum = Math.floor(Math.random() * 6) + 1;
         diceEl.classList.remove('hidden');
+    if (gameStatus) {
 
+        const diceNum = Math.floor(Math.random() * 6) + 1;
+        diceEl.classList.remove('hidden');
+
+        diceEl.src = `images/dice-${diceNum}.png`
         diceEl.src = `images/dice-${diceNum}.png`
 
         if (diceNum !== 1) {
